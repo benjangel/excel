@@ -292,7 +292,7 @@ kpis = [
     ("Ingresos del mes",
      "=SUMIFS(Ingresos!$C:$C,Ingresos!$F:$F,$B$3,Ingresos!$E:$E,$B$4)"),
     ("Gastos del mes",
-     "=SUMIFS(Gastos!$D:$D,Gastos!$G:$G,$B$3,Gastos!$E:$E,$B$4)"),
+     "=SUMIFS(Gastos!$D:$D,Gastos!$G:$G,$B$3,Gastos!$F:$F,$B$4)"),
     ("Ahorro del mes", "=B7-B8"),
     ("Dinero disponible", "=SUM(Ingresos!$C:$C)-SUM(Gastos!$D:$D)"),
     ("Fondo para casa", "=Metas!C3"),
@@ -356,7 +356,7 @@ for i, cat in enumerate(CATEGORIAS, start=7):
     wd[f"E{i}"].number_format = MONEDA
     wd[f"E{i}"].border = BORDE
     wd[f"F{i}"] = (f'=SUMIFS(Gastos!$D:$D,Gastos!$B:$B,$D{i},'
-                   f'Gastos!$G:$G,$B$3,Gastos!$E:$E,$B$4)')
+                   f'Gastos!$G:$G,$B$3,Gastos!$F:$F,$B$4)')
     wd[f"F{i}"].number_format = MONEDA
     wd[f"F{i}"].border = BORDE
     wd[f"G{i}"] = f'=IF(E{i}=0,0,F{i}/E{i})'
@@ -390,7 +390,7 @@ for k, nombre in enumerate(MESES, start=0):
     wd[f"B{fila}"] = (f'=SUMIFS(Ingresos!$C:$C,Ingresos!$F:$F,{mes_num},'
                       f'Ingresos!$E:$E,$B$4)')
     wd[f"C{fila}"] = (f'=SUMIFS(Gastos!$D:$D,Gastos!$G:$G,{mes_num},'
-                      f'Gastos!$E:$E,$B$4)')
+                      f'Gastos!$F:$F,$B$4)')
     wd[f"D{fila}"] = f'=B{fila}-C{fila}'
     for col in "BCD":
         wd[f"{col}{fila}"].number_format = MONEDA
